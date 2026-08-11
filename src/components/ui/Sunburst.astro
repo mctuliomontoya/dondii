@@ -1,0 +1,73 @@
+---
+interface Props {
+  variant?: "full" | "compact" | "accent";
+  animated?: boolean;
+  class?: string;
+}
+
+const { variant = "full", animated = false, class: className = "" } = Astro.props;
+
+const rayCounts: Record<string, number> = { full: 16, compact: 10, accent: 6 };
+const sizes: Record<string, number> = { full: 420, compact: 200, accent: 88 };
+
+const rays = rayCounts[variant];
+const size = sizes[variant];
+const innerR = 18;
+const outerR = 92;
+
+const lines = Array.from({ length: rays }, (_, i) => {
+  const angle = (i / rays) * Math.PI * 2;
+  return {
+    x1: 100 + Math.cos(angle) * innerR,
+    y1: 100 + Math.sin(angle) * innerR,
+    x2: 100 + Math.cos(angle) * outerR,
+    y2: 100 + Math.sin(angle) * outerR,
+  };
+});
+---
+
+<svg
+  class:list={["sunburst", animated && "sunburst--animated", className]}
+  viewBox="0 0 200 200"
+  width={size}
+  height={size}
+  aria-hidden="true"
+  role="presentation"
+>
+  <g stroke="currentColor" stroke-width="1.5" fill="none">
+    {lines.map((l) => <line x1={l.x1} y1={l.y1} x2={l.x2} y2={l.y2} />)}
+    <circle cx="100" cy="100" r="14" fill="currentColor" stroke="none" />
+  </g>
+</svg>
+
+<style>
+  .sunburst {
+    display: block;
+  }
+
+  .sunburst--animated line {
+    stroke-dasharray: 80;
+    stroke-dashoffset: 80;
+    animation: sunburst-draw 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: calc(var(--ray-delay, 0) * 40ms);
+  }
+
+  @keyframes sunburst-draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sunburst--animated line {
+      animation: none;
+      stroke-dashoffset: 0;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<SVGLineElement>(".sunburst--animated line").forEach((line, i) => {
+    line.style.setProperty("--ray-delay", String(i));
+  });
+</script>
