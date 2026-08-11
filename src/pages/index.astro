@@ -1,12 +1,27 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Hero from "../components/home/Hero.astro";
+import Hook from "../components/home/Hook.astro";
+import ForDiners from "../components/home/ForDiners.astro";
+import ForBusinesses from "../components/home/ForBusinesses.astro";
+import Differentiators from "../components/home/Differentiators.astro";
+import Testimonials from "../components/home/Testimonials.astro";
+import FoundersTeaser from "../components/home/FoundersTeaser.astro";
+import BlogTeaser from "../components/home/BlogTeaser.astro";
+import FinalCta from "../components/home/FinalCta.astro";
 ---
 
 <Layout
   title="Inicio"
   description="Dondii es la app de descubrimiento gastronómico donde la calidad se ve. Descubre, saborea y comparte la mejor comida de tu ciudad."
 >
-  <p class="mx-auto max-w-2xl px-6 py-24 text-center text-ink/60">
-    Contenido de la Home en construcción — ver Tasks 4 a 6 y 9 de este plan.
-  </p>
+  <Hero />
+  <Hook />
+  <ForDiners />
+  <ForBusinesses />
+  <Differentiators />
+  <Testimonials />
+  <FoundersTeaser />
+  <BlogTeaser />
+  <FinalCta />
 </Layout>

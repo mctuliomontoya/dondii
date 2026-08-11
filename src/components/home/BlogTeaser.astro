@@ -1,0 +1,52 @@
+---
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog"))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 2);
+---
+
+<section class="reveal border-y border-primary-light/40 bg-primary-light/20 py-24 md:py-28">
+  <div class="mx-auto max-w-6xl px-6">
+    <p class="text-sm font-semibold uppercase tracking-widest text-primary-dark">Del blog</p>
+    <h2 class="mt-3 max-w-2xl font-display text-3xl font-black leading-tight text-ink md:text-4xl">
+      Ideas para pensar la comida distinto.
+    </h2>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-2">
+      {
+        posts.map((post) => (
+          <a
+            href={`/blog/${post.id}`}
+            class="rounded-2xl bg-white p-6 transition-colors duration-200 hover:bg-white/80"
+          >
+            <time
+              datetime={post.data.date.toISOString()}
+              class="text-sm text-ink/50"
+            >
+              {post.data.date.toLocaleDateString("es-MX", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })}
+            </time>
+            <h3 class="mt-2 font-display text-lg font-bold text-ink">{post.data.title}</h3>
+            <p class="mt-2 leading-relaxed text-ink/70">{post.data.excerpt}</p>
+          </a>
+        ))
+      }
+    </div>
+
+    <a
+      href="/blog"
+      class="mt-10 inline-block font-semibold text-primary underline underline-offset-4 transition-colors duration-200 hover:text-primary-dark"
+    >
+      Ver todo el blog →
+    </a>
+  </div>
+</section>
+
+<script>
+  import { revealOnScroll } from "../../scripts/motion";
+  revealOnScroll(".reveal");
+</script>
