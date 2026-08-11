@@ -31,7 +31,7 @@ const highlights = [
     <div class="mt-12 grid gap-6 sm:grid-cols-2">
       {
         highlights.map((item) => (
-          <div class="rounded-2xl bg-white p-6 transition-colors duration-200 hover:bg-white/80">
+          <div class="rounded-2xl border border-primary-light/60 bg-surface p-6 transition duration-200 hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10">
             <h3 class="font-display text-lg font-bold text-ink">{item.segment}</h3>
             <p class="mt-2 leading-relaxed text-ink/70">{item.body}</p>
           </div>
@@ -58,8 +58,3 @@ const highlights = [
     </div>
   </div>
 </section>
-
-<script>
-  import { revealOnScroll } from "../../scripts/motion";
-  revealOnScroll(".reveal");
-</script>

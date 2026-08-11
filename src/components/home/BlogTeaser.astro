@@ -18,16 +18,17 @@ const posts = (await getCollection("blog"))
         posts.map((post) => (
           <a
             href={`/blog/${post.id}`}
-            class="rounded-2xl bg-white p-6 transition-colors duration-200 hover:bg-white/80"
+            class="rounded-2xl border border-primary-light/60 bg-surface p-6 transition duration-200 hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10"
           >
             <time
-              datetime={post.data.date.toISOString()}
+              datetime={post.data.date.toISOString().slice(0, 10)}
               class="text-sm text-ink/50"
             >
               {post.data.date.toLocaleDateString("es-MX", {
                 day: "numeric",
                 month: "long",
                 year: "numeric",
+                timeZone: "UTC",
               })}
             </time>
             <h3 class="mt-2 font-display text-lg font-bold text-ink">{post.data.title}</h3>
@@ -45,8 +46,3 @@ const posts = (await getCollection("blog"))
     </a>
   </div>
 </section>
-
-<script>
-  import { revealOnScroll } from "../../scripts/motion";
-  revealOnScroll(".reveal");
-</script>
