@@ -26,3 +26,6 @@ pnpm-debug.log*
 # impeccable local session state (machine/session-specific)
 .impeccable/config.local.json
 .impeccable/hook.cache.json
+
+# subagent-driven-development scratch workspace
+.superpowers/
