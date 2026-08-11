@@ -41,13 +41,14 @@ export function revealOnScroll(selector: string): void {
   targets.forEach((el, index) => {
     gsap.fromTo(
       el,
-      { opacity: 0, y: 32 },
+      { opacity: 0, y: 32, scaleX: 0.96, transformOrigin: "center" },
       {
         opacity: 1,
         y: 0,
+        scaleX: 1,
         duration: 0.7,
         delay: index * 0.08,
-        ease: "power2.out",
+        ease: "expo.out",
         scrollTrigger: {
           trigger: el,
           start: "top 82%",
@@ -79,7 +80,7 @@ export function revealNow(selector: string): void {
       opacity: 1,
       y: 0,
       duration: 0.3,
-      ease: "power2.out",
+      ease: "expo.out",
       overwrite: "auto",
     },
   );
