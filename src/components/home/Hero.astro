@@ -1,0 +1,50 @@
+---
+import DownloadButtons from "../layout/DownloadButtons.astro";
+---
+
+<section class="relative isolate overflow-hidden bg-paper">
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute -top-40 right-[-12%] h-[34rem] w-[34rem] rounded-full bg-primary-light/40 blur-3xl"
+  >
+  </div>
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute -bottom-48 -left-24 h-[26rem] w-[26rem] rounded-full bg-tomato/10 blur-3xl"
+  >
+  </div>
+
+  <div
+    class="relative mx-auto flex max-w-5xl flex-col items-center gap-8 px-6 py-28 text-center md:py-36"
+  >
+    <span
+      class="inline-flex items-center gap-2 rounded-full border border-primary-light bg-paper px-4 py-1.5 text-sm font-semibold text-primary-dark"
+    >
+      <span class="relative flex h-2 w-2">
+        <span
+          class="absolute inline-flex h-full w-full animate-ping motion-reduce:animate-none rounded-full bg-tomato opacity-75"
+        ></span>
+        <span class="relative inline-flex h-2 w-2 rounded-full bg-tomato"></span>
+      </span>
+      Ya disponible en Hermosillo
+    </span>
+
+    <h1
+      class="max-w-3xl text-balance font-display text-5xl font-black leading-[0.95] tracking-tight text-ink md:text-7xl"
+    >
+      Descubre. Saborea. <span class="text-tomato">Comparte.</span>
+    </h1>
+
+    <p class="font-display text-xl italic text-primary-dark md:text-2xl">
+      Donde la calidad se ve.
+    </p>
+
+    <p class="max-w-xl text-lg leading-relaxed text-ink/70">
+      La app de descubrimiento gastronómico donde gana quien cocina mejor —
+      no quien paga más por publicidad. Encuentra tu próximo lugar favorito,
+      hoy mismo, en Hermosillo.
+    </p>
+
+    <DownloadButtons class="mt-2" />
+  </div>
+</section>
