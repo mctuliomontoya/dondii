@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-10T00:00:00.000Z",
+  "title": "Design System: Dondii",
+  "extensions": {
+    "colorMeta": {
+      "brass": {
+        "role": "primary",
+        "displayName": "Brass",
+        "canonical": "#c9a35a",
+        "tonalRamp": ["#241b0c", "#3f2f15", "#6b5b3a", "#a8863f", "#c9a35a", "#dcbc7e", "#ecd6ab", "#f8ecd6"]
+      },
+      "brass-oscuro": {
+        "role": "primary-hover",
+        "displayName": "Brass Oscuro",
+        "canonical": "#a8863f",
+        "tonalRamp": ["#1c1409", "#332510", "#54401c", "#7c5f2c", "#a8863f", "#c4a765", "#dcc794", "#f0e3c4"]
+      },
+      "brass-tenue": {
+        "role": "primary-light",
+        "displayName": "Brass Tenue",
+        "canonical": "#6b5b3a",
+        "tonalRamp": ["#0f0c07", "#1e190f", "#372c1b", "#52422a", "#6b5b3a", "#8c795a", "#b0a081", "#d6ccb6"]
+      },
+      "garnet": {
+        "role": "secondary",
+        "displayName": "Garnet",
+        "canonical": "#c25a6a",
+        "tonalRamp": ["#280c11", "#4a1620", "#742534", "#9c3a4c", "#c25a6a", "#d6828f", "#e6afb8", "#f5dade"]
+      },
+      "esmeralda": {
+        "role": "tertiary",
+        "displayName": "Esmeralda",
+        "canonical": "#5f9f7a",
+        "tonalRamp": ["#0e1b14", "#1c3324", "#2f5138", "#456f4f", "#5f9f7a", "#87ba9c", "#b3d6c1", "#dcede4"]
+      },
+      "carbon-verdoso": {
+        "role": "neutral",
+        "displayName": "Carbón Verdoso",
+        "canonical": "#0b0f0d",
+        "tonalRamp": ["#050705", "#0b0f0d", "#131a17", "#1e2925", "#2e3d37", "#455850", "#6b8074", "#9db3a6"]
+      },
+      "superficie-carbon": {
+        "role": "neutral",
+        "displayName": "Superficie Carbón",
+        "canonical": "#141b17",
+        "tonalRamp": ["#070a08", "#0e1310", "#141b17", "#1f2b25", "#2f4038", "#485b51", "#6e8479", "#9fb2a8"]
+      },
+      "pergamino": {
+        "role": "neutral",
+        "displayName": "Pergamino",
+        "canonical": "#f2ead9",
+        "tonalRamp": ["#4a4231", "#6e644a", "#998c68", "#c3b48d", "#e2d6bc", "#eee3ce", "#f2ead9", "#faf6ec"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display / Prata", "purpose": "Títulos de sección — momento ceremonial. Peso único 400, jerarquía por tamaño/tracking, no por bold." },
+      "body": { "displayName": "Body / Sora", "purpose": "Todo el cuerpo de lectura: párrafos, copy de card, prosa de blog." },
+      "label": { "displayName": "Label / NouvelleGrotesquerie", "purpose": "Kickers de sección y palabras individuales de énfasis dentro de un titular Prata. Nunca párrafos corridos." }
+    },
+    "shadows": [
+      { "name": "card-hover", "value": "0 10px 30px -10px color-mix(in srgb, #c9a35a 14%, transparent)", "purpose": "Aparece solo en :hover de card, junto con -translate-y-1. Confirma interactividad, nunca jerarquía en reposo." }
+    ],
+    "motion": [
+      { "name": "reveal-on-scroll", "value": "opacity 0→1, translateY 32px→0, scaleX 0.96→1 desde el centro, duration 0.7s, ease expo.out, stagger 0.08s", "purpose": "GSAP ScrollTrigger, dispara a top 82% del viewport; idempotente vía data-revealed. Respeta prefers-reduced-motion (salta a estado final con gsap.set)." },
+      { "name": "sunburst-draw", "value": "stroke-dashoffset 80→0, duration 1.4s, ease cubic-bezier(0.16,1,0.3,1), una sola vez al cargar", "purpose": "Gesto de apertura ceremonial del sunburst en el Hero. Respeta prefers-reduced-motion (sin animación, estado final directo)." }
+    ]
+  }
+}
