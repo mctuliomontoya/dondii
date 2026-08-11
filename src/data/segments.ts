@@ -34,7 +34,7 @@ export const segments: Segment[] = [
   },
   {
     id: "negocios-pequenos",
-    label: "Negocios pequeños",
+    label: "Negocios pequeños e informales",
     tagline: "Del boca a boca de tu colonia a toda Hermosillo.",
     features: [
       { title: "Canal de descubrimiento desde cero", body: "Perfil con fotos y reseñas sin saber nada de marketing digital." },
@@ -46,7 +46,7 @@ export const segments: Segment[] = [
   },
   {
     id: "marcas-independientes",
-    label: "Marcas independientes",
+    label: "Marcas independientes sin local",
     tagline: "Productos artesanales invisibles, ahora descubribles.",
     features: [
       { title: "Discoverability para productos invisibles", body: "Un catálogo frente a gente que busca descubrir comida nueva." },
