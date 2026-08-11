@@ -67,12 +67,12 @@ import { segments } from "../../data/segments";
                 ✦ {segment.badge} — la única categoría de su tipo en México
               </p>
             )}
-            <p class="max-w-2xl font-display text-xl font-bold text-ink md:text-2xl">
+            <h2 class="max-w-2xl font-display text-xl font-bold text-ink md:text-2xl">
               {segment.tagline}
-            </p>
+            </h2>
             <div class="mt-6 grid gap-6 sm:grid-cols-2">
               {segment.features.map((feature) => (
-                <div class="rounded-2xl border border-primary-light/60 bg-white p-6 transition-colors duration-200 hover:border-primary/50">
+                <div class="rounded-2xl border border-primary-light/60 bg-surface p-6 transition duration-200 hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10">
                   <h3 class="font-display text-lg font-bold text-ink">{feature.title}</h3>
                   <p class="mt-2 leading-relaxed text-ink/70">{feature.body}</p>
                 </div>
@@ -93,7 +93,7 @@ import { segments } from "../../data/segments";
 </div>
 
 <script>
-  import { revealOnScroll } from "../../scripts/motion";
+  import { revealNow, revealOnScroll } from "../../scripts/motion";
 
   const tablist = document.querySelector<HTMLElement>('[role="tablist"]');
   const triggers = Array.from(
@@ -115,7 +115,9 @@ import { segments } from "../../data/segments";
       panel.hidden = panel.dataset.tabPanel !== targetId;
     });
 
-    revealOnScroll(`[data-tab-panel="${targetId}"]:not([hidden])`);
+    // Click/keyboard driven: animate immediately instead of arming a new
+    // ScrollTrigger on every switch (they would stack and never clean up).
+    revealNow(`[data-tab-panel="${targetId}"]:not([hidden])`);
   }
 
   triggers.forEach((trigger) => {
