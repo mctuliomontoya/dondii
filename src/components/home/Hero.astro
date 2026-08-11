@@ -1,50 +1,90 @@
 ---
 import DownloadButtons from "../layout/DownloadButtons.astro";
+import Sunburst from "../ui/Sunburst.astro";
 ---
 
 <section class="relative isolate overflow-hidden bg-paper">
-  <div
-    aria-hidden="true"
-    class="pointer-events-none absolute -top-40 right-[-12%] h-[34rem] w-[34rem] rounded-full bg-primary-light/40 blur-3xl"
-  >
-  </div>
-  <div
-    aria-hidden="true"
-    class="pointer-events-none absolute -bottom-48 -left-24 h-[26rem] w-[26rem] rounded-full bg-tomato/10 blur-3xl"
-  >
+  <div class="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 text-primary/25" aria-hidden="true">
+    <Sunburst variant="full" animated />
   </div>
 
-  <div
-    class="relative mx-auto flex max-w-5xl flex-col items-center gap-8 px-6 py-28 text-center md:py-36"
-  >
-    <span
-      class="inline-flex items-center gap-2 rounded-full border border-primary-light bg-paper px-4 py-1.5 text-sm font-semibold text-primary-dark"
-    >
+  <div class="relative mx-auto flex max-w-5xl flex-col items-center gap-8 px-6 py-28 text-center md:py-36">
+    <span class="inline-flex items-center gap-2 rounded-full border border-primary-light/60 px-4 py-1.5 font-impact text-xs uppercase tracking-[0.14em] text-primary">
       <span class="relative flex h-2 w-2">
-        <span
-          class="absolute inline-flex h-full w-full animate-ping motion-reduce:animate-none rounded-full bg-tomato opacity-75"
-        ></span>
+        <span class="absolute inline-flex h-full w-full animate-ping motion-reduce:animate-none rounded-full bg-tomato opacity-75"></span>
         <span class="relative inline-flex h-2 w-2 rounded-full bg-tomato"></span>
       </span>
       Ya disponible en Hermosillo
     </span>
 
-    <h1
-      class="max-w-3xl text-balance font-display text-5xl font-black leading-[0.95] tracking-tight text-ink md:text-7xl"
-    >
-      Descubre. Saborea. <span class="text-tomato">Comparte.</span>
+    <h1 class="v1-title max-w-3xl text-balance font-display text-5xl font-normal leading-[1.05] tracking-tight text-ink md:text-7xl">
+      <span class="v1-word" style="--i:0">Donde la</span>
+      <span class="v1-word text-primary" style="--i:1">calidad</span>
+      <span class="v1-word" style="--i:2">se ve.</span>
     </h1>
 
-    <p class="font-display text-xl italic text-primary-dark md:text-2xl">
-      Donde la calidad se ve.
-    </p>
-
-    <p class="max-w-xl text-lg leading-relaxed text-ink/70">
+    <p class="v1-fade max-w-xl text-lg leading-relaxed text-ink/75" style="--i:3">
       La app de descubrimiento gastronómico donde gana quien cocina mejor —
       no quien paga más por publicidad. Encuentra tu próximo lugar favorito,
       hoy mismo, en Hermosillo.
     </p>
 
-    <DownloadButtons class="mt-2" />
+    <div class="v1-fade flex flex-wrap items-center justify-center gap-3 mt-2" style="--i:4">
+      <DownloadButtons />
+    </div>
   </div>
 </section>
+
+<style>
+  .v1-title {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0 0.4ch;
+  }
+
+  .v1-word {
+    display: inline-block;
+    animation: v1-word-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: calc(var(--i) * 120ms + 150ms);
+  }
+
+  @keyframes v1-word-in {
+    from {
+      clip-path: inset(0 100% 0 0);
+      transform: translateY(0.4em);
+      opacity: 0;
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .v1-fade {
+    animation: v1-fade-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: calc(var(--i) * 120ms + 150ms);
+  }
+
+  @keyframes v1-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .v1-word,
+    .v1-fade {
+      animation: none !important;
+      opacity: 1 !important;
+      clip-path: none !important;
+      transform: none !important;
+    }
+  }
+</style>
