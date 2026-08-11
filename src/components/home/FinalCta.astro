@@ -1,13 +1,21 @@
 ---
 import DownloadButtons from "../layout/DownloadButtons.astro";
+import Sunburst from "../ui/Sunburst.astro";
 ---
 
-<section class="reveal mx-auto flex max-w-6xl flex-col items-center gap-6 border-t border-ink/10 px-6 py-24 text-center md:py-28">
-  <h2 class="max-w-2xl font-display text-3xl font-black leading-tight text-ink md:text-4xl">
-    Donde la calidad se ve.
-  </h2>
-  <p class="max-w-xl leading-relaxed text-ink/70">
-    Descarga Dondii y descubre por qué Hermosillo ya está comiendo distinto.
-  </p>
-  <DownloadButtons class="mt-2" />
+<section class="reveal relative isolate overflow-hidden border-t border-primary-light/30 bg-paper">
+  <div class="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 text-primary/20" aria-hidden="true">
+    <Sunburst variant="full" />
+  </div>
+
+  <div class="relative mx-auto flex max-w-6xl flex-col items-center gap-6 px-6 py-24 text-center md:py-28">
+    <h2 class="max-w-2xl font-display text-3xl font-normal leading-tight text-ink md:text-4xl">
+      Donde la calidad se ve.
+    </h2>
+    <p class="max-w-xl leading-relaxed text-ink/70">
+      No es una app más. Es un estándar que ya está en marcha en Hermosillo —
+      y podés ser parte de él hoy.
+    </p>
+    <DownloadButtons class="mt-2" />
+  </div>
 </section>
