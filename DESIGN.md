@@ -5,6 +5,7 @@ colors:
   brass: "#c9a35a"
   brass-oscuro: "#a8863f"
   brass-tenue: "#6b5b3a"
+  brass-brillante: "#dcbc7e"
   garnet: "#c25a6a"
   esmeralda: "#5f9f7a"
   carbon-verdoso: "#0b0f0d"
@@ -87,6 +88,14 @@ Paleta de vitrina nocturna: carbón verdoso profundo como fondo constante, brass
 - **Carbón Verdoso** (`#0b0f0d`): fondo base de toda la página.
 - **Superficie Carbón** (`#141b17`): superficie elevada — fondo de cards, un tono más claro que el carbón base para dar separación sutil sin sombra pesada.
 - **Pergamino** (`#f2ead9`): texto principal sobre fondo oscuro.
+
+### Brass Brillante (hover sobre fondo oscuro)
+- **Brass Brillante** (`#dcbc7e`): estado hover/activo de texto en Brass cuando el elemento vive sobre un fondo oscuro (Carbón Verdoso o Superficie Carbón). Sitio por defecto es oscuro, así que oscurecer al hacer hover (Brass Oscuro) baja el contraste en vez de subirlo — el efecto contrario al esperado. Brass Oscuro se reserva para hover/activo sobre fondos claros (paneles vitrina en Pergamino, ej. Founders y el panel de Negocios Fundadores); Brass Brillante es su equivalente para hover/activo sobre fondos oscuros.
+
+### Card elevation: dos tratamientos intencionales
+Coexisten dos direcciones de elevación de card, ambas intencionales:
+- **Card elevada** (tratamiento primario): card en `Superficie Carbón` sobre una sección de fondo más oscuro (`Carbón Verdoso`) — la card se lee como levantada. Usado en ForDiners y Testimonials.
+- **Card hundida** (tratamiento secundario): card en `Carbón Verdoso` sobre una sección de fondo `Superficie Carbón` — la card se lee como insertada/hundida, dando un ritmo sutilmente distinto entre secciones adyacentes. Usado en ForBusinesses y BlogTeaser.
 
 ### Named Rules
 **La Regla de las Joyas Escasas.** Garnet y esmeralda se usan solo para señales puntuales de énfasis — nunca cubren superficies grandes. Cada una aparece sola en su momento, nunca compitiendo la una con la otra en el mismo elemento.
