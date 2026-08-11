@@ -1,0 +1,65 @@
+---
+const highlights = [
+  {
+    segment: "Restaurantes",
+    body: "Visibilidad calificada y data accionable por platillo.",
+  },
+  {
+    segment: "Negocios pequeños",
+    body: "Presencia digital sin saber de marketing ni invertir un peso.",
+  },
+  {
+    segment: "Marcas independientes",
+    body: "Catálogo y reseñas para productos hoy invisibles fuera de su círculo.",
+  },
+  {
+    segment: "Creadores de Comida",
+    body: "Vende lo que cocinas sin necesidad de un negocio formalmente registrado.",
+  },
+];
+---
+
+<section class="reveal border-y border-primary-light/40 bg-primary-light/20 py-24 md:py-28">
+  <div class="mx-auto max-w-6xl px-6">
+    <p class="text-sm font-semibold uppercase tracking-widest text-primary-dark">
+      Para negocios y creadores
+    </p>
+    <h2 class="mt-3 max-w-2xl font-display text-3xl font-black leading-tight text-ink md:text-4xl">
+      La calidad debe ser visible. Así de simple.
+    </h2>
+
+    <div class="mt-12 grid gap-6 sm:grid-cols-2">
+      {
+        highlights.map((item) => (
+          <div class="rounded-2xl bg-white p-6 transition-colors duration-200 hover:bg-white/80">
+            <h3 class="font-display text-lg font-bold text-ink">{item.segment}</h3>
+            <p class="mt-2 leading-relaxed text-ink/70">{item.body}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div
+      class="mt-10 flex flex-col items-start gap-6 rounded-2xl bg-ink p-8 text-paper md:flex-row md:items-center md:justify-between md:gap-4"
+    >
+      <div>
+        <p class="font-display font-bold">Programa de Negocios Fundadores</p>
+        <p class="mt-1 max-w-md text-paper/70">
+          Los primeros 50 negocios del softlaunch obtienen precio fundador de
+          por vida y posicionamiento prioritario durante 12 meses.
+        </p>
+      </div>
+      <a
+        href="/features"
+        class="shrink-0 rounded-full bg-primary px-6 py-3 font-semibold text-paper transition-colors duration-200 hover:bg-primary-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-light"
+      >
+        Ver todas las features
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { revealOnScroll } from "../../scripts/motion";
+  revealOnScroll(".reveal");
+</script>
