@@ -1,0 +1,49 @@
+---
+import DownloadButtons from "./DownloadButtons.astro";
+
+const year = new Date().getFullYear();
+
+const legalLinks = [
+  { href: "/privacidad", label: "Privacidad" },
+  { href: "/terminos", label: "Términos" },
+];
+---
+
+<footer class="border-t border-primary-light/30 bg-ink text-paper">
+  <div class="mx-auto max-w-6xl px-6 py-16 lg:px-8">
+    <div class="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+      <div class="max-w-sm">
+        <p class="font-display text-2xl font-bold tracking-tight">Dondii</p>
+        <p class="mt-3 text-sm leading-relaxed text-paper/65">
+          Donde la calidad se ve. Descubre, saborea y comparte la mejor comida de tu ciudad.
+        </p>
+      </div>
+      <DownloadButtons />
+    </div>
+
+    <div
+      class="mt-12 flex flex-col gap-4 border-t border-paper/10 pt-6 text-sm text-paper/55 md:flex-row md:items-center md:justify-between"
+    >
+      <p>&copy; {year} Dondii. Todos los derechos reservados.</p>
+      <div class="flex gap-6">
+        {
+          legalLinks.map((link) => (
+            <a
+              href={link.href}
+              class="transition hover:text-paper focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tomato"
+            >
+              {link.label}
+            </a>
+          ))
+        }
+        <!-- TODO: reemplazar con los links reales de redes sociales -->
+        <a
+          href="#"
+          class="transition hover:text-paper focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tomato"
+        >
+          Instagram
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
