@@ -13,16 +13,16 @@
 }
 
 @theme {
-  --color-primary: #c9a35a;
-  --color-primary-dark: #a8863f;
-  --color-primary-bright: #dcbc7e;
-  --color-tomato: #c25a6a;
-  --color-primary-light: #6b5b3a;
-  --color-emerald: #5f9f7a;
+  --color-primary: #8a2e0c;
+  --color-primary-dark: #6e2308;
+  --color-primary-bright: #b8471a;
+  --color-tomato: #d9622b;
+  --color-primary-light: #e8c9b0;
+  --color-emerald: #2e7d32;
 
-  --color-ink: #f2ead9;
-  --color-paper: #0b0f0d;
-  --color-surface: #141b17;
+  --color-ink: #2b1a12;
+  --color-paper: #fdf6ef;
+  --color-surface: #f6ece1;
 
   --font-display: "Prata", ui-serif, Georgia, serif;
   --font-sans: "Sora", ui-sans-serif, system-ui, sans-serif;
