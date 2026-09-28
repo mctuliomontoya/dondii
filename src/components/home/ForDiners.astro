@@ -1,20 +1,52 @@
 ---
-const features = [
+/** Inner markup of 24×24 stroke icons (Lucide/Feather style). */
+const icons = {
+  mute: '<path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="m22 9-6 6M16 9l6 6"/>',
+  feed: '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 4h7M14 9h7M14 15h7M14 20h7"/>',
+  user: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+  utensils: '<path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/>',
+  ban: '<circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/>',
+  star: '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',
+  verified: '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/>',
+  camera: '<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>',
+  shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>',
+  message: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
+  music: '<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',
+  pin: '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',
+  heart: '<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>',
+  bookmark: '<path d="m19 21-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>',
+  play: '<circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/>',
+  users: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>',
+  home: '<path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/>',
+  thumbsUp: '<path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/>',
+  chat: '<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>',
+};
+
+type IconName = keyof typeof icons;
+
+/** Each icon set is emitted twice so every burst has enough particles. */
+const BURST_REPEAT = 2;
+
+const features: { title: string; body: string; burst: IconName[] }[] = [
   {
     title: "Feed sin ruido",
     body: "Solo comida. Sin política, sin influencers de otros temas, sin distracciones ajenas a lo que se te antoja.",
+    burst: ["mute", "feed", "user", "utensils", "ban", "heart"],
   },
   {
     title: "Reseñas honestas",
     body: "Cuentas verificadas, fotos reales y moderación activa contra reseñas pagadas.",
+    burst: ["star", "verified", "camera", "shield", "message", "star"],
   },
   {
     title: "Playlists de lugares",
     body: "Arma listas temáticas de restaurantes, como playlists de Spotify, y sigue las de otros.",
+    burst: ["music", "pin", "heart", "bookmark", "play", "feed"],
   },
   {
     title: "Comunidad local",
     body: "Recomendaciones reales de gente de tu ciudad, no de bots ni cuentas pagadas.",
+    burst: ["users", "pin", "home", "thumbsUp", "chat", "user"],
   },
 ];
 ---
@@ -25,12 +57,30 @@ const features = [
     Tu próximo lugar favorito, sin perder tiempo scrolleando.
   </h2>
 
-  <div class="mt-12 grid gap-6 sm:grid-cols-2">
+  <!-- isolate: every particle layer (z-0) stacks below every card (z-10). -->
+  <div class="isolate mt-12 grid gap-6 sm:grid-cols-2">
     {
       features.map((feature) => (
-        <div class="rounded border border-primary-light/40 bg-surface p-6 transition duration-200 hover:-translate-y-1 hover:border-primary/60 hover:shadow-lg hover:shadow-primary/10">
-          <h3 class="font-display text-lg font-normal text-ink">{feature.title}</h3>
-          <p class="mt-2 leading-relaxed text-ink/70">{feature.body}</p>
+        <div data-burst class="relative">
+          <div aria-hidden="true" class="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
+            {Array.from({ length: BURST_REPEAT }, () => feature.burst).flat().map((name) => (
+              <svg
+                data-burst-particle
+                class="absolute h-7 w-7 opacity-0"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.75"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                set:html={icons[name]}
+              ></svg>
+            ))}
+          </div>
+          <div class="relative z-10 h-full rounded border border-primary-light/40 bg-surface p-6 transition duration-200 hover:-translate-y-1 hover:border-primary/60 hover:shadow-lg hover:shadow-primary/10">
+            <h3 class="font-display text-lg font-normal text-ink">{feature.title}</h3>
+            <p class="mt-2 leading-relaxed text-ink/70">{feature.body}</p>
+          </div>
         </div>
       ))
     }
