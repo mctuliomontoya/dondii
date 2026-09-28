@@ -1,20 +1,25 @@
 ---
+/** `icon` is the inner markup of a 24×24 filled icon (Material style), revealed on hover. */
 const highlights = [
   {
     segment: "Restaurantes",
     body: "Visibilidad calificada y data accionable por platillo.",
+    icon: '<path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z"/>',
   },
   {
     segment: "Negocios pequeños",
     body: "Presencia digital sin saber de marketing ni invertir un peso.",
+    icon: '<path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z"/>',
   },
   {
     segment: "Marcas independientes",
     body: "Catálogo y reseñas para productos hoy invisibles fuera de su círculo.",
+    icon: '<path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/>',
   },
   {
     segment: "Creadores de Comida",
     body: "Vende lo que cocinas sin necesidad de un negocio formalmente registrado.",
+    icon: '<path fill-rule="evenodd" d="M17 21a1 1 0 0 0 1-1v-5.35c0-.457.316-.844.727-1.041a4 4 0 0 0-2.134-7.589 5 5 0 0 0-9.186 0 4 4 0 0 0-2.134 7.588c.411.198.727.585.727 1.041V20a1 1 0 0 0 1 1ZM6 16.25h12v1.5H6z"/>',
   },
 ];
 ---
@@ -31,9 +36,16 @@ const highlights = [
     <div class="mt-12 grid gap-6 sm:grid-cols-2">
       {
         highlights.map((item) => (
-          <div class="rounded border border-primary-light/40 bg-paper p-6 transition duration-200 hover:-translate-y-1 hover:border-primary/60 hover:shadow-lg hover:shadow-primary/10">
-            <h3 class="font-display text-lg font-normal text-ink">{item.segment}</h3>
-            <p class="mt-2 leading-relaxed text-ink/70">{item.body}</p>
+          <div class="group relative overflow-hidden rounded border border-primary-light/40 bg-paper p-6 transition duration-200 hover:-translate-y-1 hover:border-primary/60 hover:shadow-lg hover:shadow-primary/10">
+            <svg
+              aria-hidden="true"
+              class="pointer-events-none absolute top-1/2 -right-8 h-44 w-44 -translate-y-1/2 translate-x-12 rotate-12 scale-75 text-primary opacity-0 transition duration-500 ease-out group-hover:translate-x-0 group-hover:-rotate-6 group-hover:scale-100 group-hover:opacity-10 motion-reduce:translate-x-0 motion-reduce:-rotate-6 motion-reduce:scale-100"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              set:html={item.icon}
+            ></svg>
+            <h3 class="relative font-display text-lg font-normal text-ink">{item.segment}</h3>
+            <p class="relative mt-2 leading-relaxed text-ink/70">{item.body}</p>
           </div>
         ))
       }
